@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="hospital">
+
+    <element name="root">
+        <complexType>
+            <sequence>
+
+                <element name="hospital">
+                    <complexType>
+                        <sequence>
+                            <element name="address" type="string"/>
+
+                            <element name="DEPARTMENTS">
+                                <complexType>
+                                    <sequence>
+
+                                        <element name="department">
+                                            <complexType>
+                                                <sequence>
+                                                    <element name="name" type="string"/>
+                                                    <element name="DOCTORS">
+                                                        <complexType>
+                                                            <sequence>
+
+                                                                <element name="doctor">
+                                                                    <complexType>
+                                                                        <sequence>
+
+                                                                            <element name="name" type="string"/>
+                                                                            <element name="age" type="string"/>
+                                                                            <element name="weight" type="string"/>
+                                                                            <element name="spec" type="string"/>
+
+
+                                                                        </sequence>
+                                                                    </complexType>
+                                                                </element>
+
+
+                                                            </sequence>
+                                                        </complexType>
+                                                    </element>
+
+
+                                                </sequence>
+                                            </complexType>
+                                        </element>
+
+
+                                    </sequence>
+                                </complexType>
+                            </element>
+
+                            <element name="PATIENTS">
+                                <complexType>
+                                    <sequence>
+
+                                        <element name="patient">
+                                            <complexType>
+                                                <sequence>
+
+                                                    <element name="name" type="string"/>
+                                                    <element name="age" type="string"/>
+                                                    <element name="weight" type="string"/>
+                                                    <element name="spec" type="string"/>
+
+
+                                                </sequence>
+                                            </complexType>
+                                        </element>
+
+
+                                    </sequence>
+                                </complexType>
+                            </element>
+
+
+                        </sequence>
+                    </complexType>
+                </element>
+
+            </sequence>
+        </complexType>
+    </element>
+</schema>

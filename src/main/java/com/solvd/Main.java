@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,21 +49,21 @@ public class Main {
 
         Dental dental =new Dental();
         Surgery surgery =new Surgery();
-        dental.setDentists(dentists);
+        dental.setDoctors(dentists);
         dental.setName("DENTAL");
-        surgery.setSurgeons(surgeons);
+        surgery.setDoctors(surgeons);
         surgery.setName("SURGERY");
 
         Hospital hospital = new Hospital();
         hospital.setAddress("Minsk");
         hospital.setPatients(patients);
-        hospital.setDentists(dentists);
-        hospital.setSurgeons(surgeons);
+//        hospital.setDentists(dentists);
+//        hospital.setSurgeons(surgeons);
 
-//        List<Department> departments = new ArrayList<>();
-//        departments.add(dental);
-//        departments.add(surgery);
-//        hospital.setDepartments(departments);
+        List<Department> departments = new ArrayList<>();
+        departments.add(dental);
+        departments.add(surgery);
+        hospital.setDepartments(departments);
 
         System.out.println("\nPRINT HOSPITAL");
         hospital.getPatients().forEach(p -> System.out.println(p));
@@ -91,7 +92,8 @@ public class Main {
         System.out.println(result);
 
         File filejaxb = new File("jaxb.xml");
-        FileUtils.write(filejaxb, result);
+//        FileUtils.write(filejaxb, result);
+        FileUtils.writeStringToFile(filejaxb, result, Charset.defaultCharset());
 
 
         // get variables from xml file, created before
@@ -102,6 +104,6 @@ public class Main {
 
         System.out.println(hospital2);
         hospital2.getPatients().forEach(p -> System.out.println(p));
-        hospital2.getDentists().forEach(d -> System.out.println(d));
-        hospital2.getSurgeons().forEach(d -> System.out.println(d));
+//        hospital2.getDentists().forEach(d -> System.out.println(d));
+//        hospital2.getSurgeons().forEach(d -> System.out.println(d));
     }}

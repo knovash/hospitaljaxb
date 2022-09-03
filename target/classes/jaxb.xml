@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns="hospital"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="hospital schema.xsd">
 <hospital>
     <address>Minsk</address>
     <DEPARTMENTS>
@@ -50,3 +53,4 @@
         </patient>
     </PATIENTS>
 </hospital>
+</root>
