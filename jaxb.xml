@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hospital>
+    <address>Minsk</address>
+    <DENTISTS>
+        <dentist>
+            <name>Denis</name>
+            <age>44</age>
+            <weight>88</weight>
+            <spec>dentist</spec>
+        </dentist>
+        <dentist>
+            <name>Denis</name>
+            <age>44</age>
+            <weight>88</weight>
+            <spec>dentist</spec>
+        </dentist>
+    </DENTISTS>
+    <patients>
+        <name>Alex</name>
+        <age>33</age>
+        <weight>66</weight>
+    </patients>
+    <patients>
+        <name>Alex</name>
+        <age>33</age>
+        <weight>66</weight>
+    </patients>
+    <SURGEONS>
+        <surgeon>
+            <name>Sergey</name>
+            <age>66</age>
+            <weight>77</weight>
+            <spec>surgeon</spec>
+        </surgeon>
+        <surgeon>
+            <name>Sergey</name>
+            <age>66</age>
+            <weight>77</weight>
+            <spec>surgeon</spec>
+        </surgeon>
+    </SURGEONS>
+</hospital>
