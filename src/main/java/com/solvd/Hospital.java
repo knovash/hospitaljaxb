@@ -12,8 +12,8 @@ public class Hospital {
     private List<Patient> patients;
     private List<Dentist> dentists;
     private List<Surgeon> surgeons;
-    private List<Ford> fords;
-    private List<Audi> audis;
+    private List<Dental> dentals;
+    private List<Surgery> surgeries;
 
     public Hospital() {
     }
@@ -65,21 +65,21 @@ public class Hospital {
         this.surgeons = surgeons;
     }
 
-    public List<Ford> getFords() {
-        return fords;
+    public List<Dental> getFords() {
+        return dentals;
     }
     @XmlElement(name = "Ford")
     @XmlElementWrapper(name = "fords")
-    public void setFords(List<Ford> fords) {
-        this.fords = fords;
+    public void setFords(List<Dental> dentals) {
+        this.dentals = dentals;
     }
 
-    public List<Audi> getAudis() {
-        return audis;
+    public List<Surgery> getAudis() {
+        return surgeries;
     }
     @XmlElement(name = "Audi")
     @XmlElementWrapper(name = "audis")
-    public void setAudis(List<Audi> audis) {
-        this.audis = audis;
+    public void setAudis(List<Surgery> surgeries) {
+        this.surgeries = surgeries;
     }
 }

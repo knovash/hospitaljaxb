@@ -3,16 +3,14 @@
     <address>Minsk</address>
     <audis>
         <Audi>
-            <name>Sergey</name>
-            <age>66</age>
-            <weight>77</weight>
-            <car>audi</car>
+            <age>0</age>
+            <weight>0</weight>
+            <dep>surgery</dep>
         </Audi>
         <Audi>
-            <name>Sergey</name>
-            <age>66</age>
-            <weight>77</weight>
-            <car>audi</car>
+            <age>0</age>
+            <weight>0</weight>
+            <dep>surgery</dep>
         </Audi>
     </audis>
     <dentists>
@@ -31,16 +29,14 @@
     </dentists>
     <fords>
         <Ford>
-            <name>Denis</name>
-            <age>44</age>
-            <weight>88</weight>
-            <car>ford</car>
+            <age>0</age>
+            <weight>0</weight>
+            <dep>dental</dep>
         </Ford>
         <Ford>
-            <name>Denis</name>
-            <age>44</age>
-            <weight>88</weight>
-            <car>ford</car>
+            <age>0</age>
+            <weight>0</weight>
+            <dep>dental</dep>
         </Ford>
     </fords>
     <patients>

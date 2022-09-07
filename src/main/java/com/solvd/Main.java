@@ -35,17 +35,11 @@ public class Main {
         surgeon.weight = 77;
         surgeon.setSpec("surgeon");
 
-        Ford ford = new Ford();
-        ford.name = "Denis";
-        ford.age = 44;
-        ford.weight = 88;
-        ford.setCar("ford");
+        Dental dental = new Dental();
+        dental.setDep("dental");
 
-        Audi audi = new Audi();
-        audi.name = "Sergey";
-        audi.age = 66;
-        audi.weight = 77;
-        audi.setCar("audi");
+        Surgery surgery = new Surgery();
+        surgery.setDep("surgery");
 
 
 
@@ -61,13 +55,13 @@ public class Main {
         surgeons.add(surgeon);
         surgeons.add(surgeon);
 
-        List<Ford> fords = new ArrayList<>();
-        fords.add(ford);
-        fords.add(ford);
+        List<Dental> dentals = new ArrayList<>();
+        dentals.add(dental);
+        dentals.add(dental);
 
-        List<Audi> audis = new ArrayList<>();
-        audis.add(audi);
-        audis.add(audi);
+        List<Surgery> surgeries = new ArrayList<>();
+        surgeries.add(surgery);
+        surgeries.add(surgery);
 
 
 //        Dental dental =new Dental();
@@ -83,8 +77,8 @@ public class Main {
         hospital.setPatients(patients);
         hospital.setDentists(dentists);
         hospital.setSurgeons(surgeons);
-        hospital.setFords(fords);
-        hospital.setAudis(audis);
+        hospital.setFords(dentals);
+        hospital.setAudis(surgeries);
 
 //        List<Department> departments = new ArrayList<>();
 //        departments.add(dental);

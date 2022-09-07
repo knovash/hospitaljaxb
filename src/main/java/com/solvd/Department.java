@@ -1,20 +1,21 @@
 package com.solvd;
 
+//public abstract class Department extends Human {
 public abstract class Department extends Human {
-    private String car;
+    private String dep;
 
     public Department() {
     }
 
     public String toString() {
-        return ("Department: " + super.name + " " + super.age + " " + super.weight + " " + this.car);
+        return ("Department: " + " " + this.dep);
     }
 
-    public String getCar() {
-        return car;
+    public String getDep() {
+        return dep;
     }
 
-    public void setCar(String car) {
-        this.car = car;
+    public void setDep(String dep) {
+        this.dep = dep;
     }
 }
