@@ -1,21 +1,24 @@
 package com.solvd;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+
 //public abstract class Department extends Human {
-public abstract class Department extends Human {
-    private String dep;
+public abstract class Department {
+    private String name;
 
     public Department() {
     }
 
     public String toString() {
-        return ("Department: " + " " + this.dep);
+        return ("Department: " + " " + this.name);
     }
 
-    public String getDep() {
-        return dep;
+    public String getName() {
+        return name;
     }
 
-    public void setDep(String dep) {
-        this.dep = dep;
+    public void setName(String name) {
+        this.name = name;
     }
 }

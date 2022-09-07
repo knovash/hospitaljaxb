@@ -35,11 +35,7 @@ public class Main {
         surgeon.weight = 77;
         surgeon.setSpec("surgeon");
 
-        Dental dental = new Dental();
-        dental.setDep("dental");
 
-        Surgery surgery = new Surgery();
-        surgery.setDep("surgery");
 
 
 
@@ -55,6 +51,16 @@ public class Main {
         surgeons.add(surgeon);
         surgeons.add(surgeon);
 
+
+        Dental dental = new Dental();
+        dental.setName("dental");
+        dental.setDentists(dentists);
+
+        Surgery surgery = new Surgery();
+        surgery.setName("surgery");
+        surgery.setSurgeons(surgeons);
+
+
         List<Dental> dentals = new ArrayList<>();
         dentals.add(dental);
         dentals.add(dental);
@@ -63,27 +69,13 @@ public class Main {
         surgeries.add(surgery);
         surgeries.add(surgery);
 
-
-//        Dental dental =new Dental();
-//        Surgery surgery =new Surgery();
-////        dental.setDoctors(dentists);
-//        dental.setName("DENTAL");
-//
-////        surgery.setDoctors(surgeons);
-//        surgery.setName("SURGERY");
-
         Hospital hospital = new Hospital();
         hospital.setAddress("Minsk");
         hospital.setPatients(patients);
-        hospital.setDentists(dentists);
-        hospital.setSurgeons(surgeons);
-        hospital.setFords(dentals);
-        hospital.setAudis(surgeries);
+        hospital.setDentals(dentals);
+        hospital.setSurgeries(surgeries);
 
-//        List<Department> departments = new ArrayList<>();
-//        departments.add(dental);
-//        departments.add(surgery);
-//        hospital.setDepartments(departments);
+
 
         System.out.println("\nPRINT HOSPITAL");
         hospital.getPatients().forEach(p -> System.out.println(p));
@@ -124,10 +116,13 @@ public class Main {
 
         System.out.println(hospital2);
         hospital2.getPatients().forEach(p -> System.out.println(p));
-        hospital2.getDentists().forEach(d -> System.out.println(d));
-        hospital2.getSurgeons().forEach(d -> System.out.println(d));
-        hospital2.getFords().forEach(d -> System.out.println(d));
-        hospital2.getAudis().forEach(d -> System.out.println(d));
+//        hospital2.getDentists().forEach(d -> System.out.println(d));
+//        hospital2.getSurgeons().forEach(d -> System.out.println(d));
+        hospital2.getDentals().forEach(d -> System.out.println(d));
+        hospital2.getSurgeries().forEach(d -> System.out.println(d));
+
+        hospital2.getDentals().stream().flatMap(d -> d.getDentists().stream()).forEach(d1 -> System.out.println("-d-" + d1));
+        hospital2.getSurgeries().stream().flatMap(d -> d.getSurgeons().stream()).forEach(s1 -> System.out.println("-s-" + s1));
 
 //                hospital.getDepartments().entrySet().stream()
 //                .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
