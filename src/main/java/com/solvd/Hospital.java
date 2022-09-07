@@ -13,7 +13,7 @@ public class Hospital {
 //    private List<Dentist> dentists;
 //    private List<Surgeon> surgeons;
     private List<Dental> dentals;
-    private List<Surgery> surgeries;
+
 
     public Hospital() {
     }
@@ -54,12 +54,5 @@ public class Hospital {
         this.dentals = dentals;
     }
 
-    public List<Surgery> getSurgeries() {
-        return surgeries;
-    }
-    @XmlElement(name = "Surgery")
-    @XmlElementWrapper(name = "SURGERIES")
-    public void setSurgeries(List<Surgery> surgeries) {
-        this.surgeries = surgeries;
-    }
+
 }

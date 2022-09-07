@@ -45,36 +45,4 @@
             <weight>66</weight>
         </Patient>
     </PATIENTS>
-    <SURGERIES>
-        <Surgery>
-            <name>surgery</name>
-            <surgeons>
-                <name>Sergey</name>
-                <age>66</age>
-                <weight>77</weight>
-                <spec>surgeon</spec>
-            </surgeons>
-            <surgeons>
-                <name>Sergey</name>
-                <age>66</age>
-                <weight>77</weight>
-                <spec>surgeon</spec>
-            </surgeons>
-        </Surgery>
-        <Surgery>
-            <name>surgery</name>
-            <surgeons>
-                <name>Sergey</name>
-                <age>66</age>
-                <weight>77</weight>
-                <spec>surgeon</spec>
-            </surgeons>
-            <surgeons>
-                <name>Sergey</name>
-                <age>66</age>
-                <weight>77</weight>
-                <spec>surgeon</spec>
-            </surgeons>
-        </Surgery>
-    </SURGERIES>
 </hospital>

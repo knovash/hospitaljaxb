@@ -56,24 +56,19 @@ public class Main {
         dental.setName("dental");
         dental.setDentists(dentists);
 
-        Surgery surgery = new Surgery();
-        surgery.setName("surgery");
-        surgery.setSurgeons(surgeons);
+
 
 
         List<Dental> dentals = new ArrayList<>();
         dentals.add(dental);
         dentals.add(dental);
 
-        List<Surgery> surgeries = new ArrayList<>();
-        surgeries.add(surgery);
-        surgeries.add(surgery);
+
 
         Hospital hospital = new Hospital();
         hospital.setAddress("Minsk");
         hospital.setPatients(patients);
         hospital.setDentals(dentals);
-        hospital.setSurgeries(surgeries);
 
 
 
@@ -119,10 +114,8 @@ public class Main {
 //        hospital2.getDentists().forEach(d -> System.out.println(d));
 //        hospital2.getSurgeons().forEach(d -> System.out.println(d));
         hospital2.getDentals().forEach(d -> System.out.println(d));
-        hospital2.getSurgeries().forEach(d -> System.out.println(d));
 
         hospital2.getDentals().stream().flatMap(d -> d.getDentists().stream()).forEach(d1 -> System.out.println("-d-" + d1));
-        hospital2.getSurgeries().stream().flatMap(d -> d.getSurgeons().stream()).forEach(s1 -> System.out.println("-s-" + s1));
 
 //                hospital.getDepartments().entrySet().stream()
 //                .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
