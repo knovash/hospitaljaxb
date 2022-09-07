@@ -1,4 +1,4 @@
 package com.solvd;
 
-public class Surgeon extends Doctor{
+public class Surgeon extends Doctor {
 }

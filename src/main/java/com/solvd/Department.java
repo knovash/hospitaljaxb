@@ -6,7 +6,8 @@ import java.util.List;
 
 public abstract class Department<D extends Doctor> {
     private String name;
-    private List<D> doctors;
+
+    private List<Doctor> doctors;
 
     public String getName() {
         return name;
@@ -16,12 +17,12 @@ public abstract class Department<D extends Doctor> {
         this.name = name;
     }
 
-    public List<D> getDoctors() {
+    public List<Doctor> getDoctors() {
         return doctors;
     }
-    @XmlElement(name = "doctor")
-    @XmlElementWrapper(name = "DOCTORS")
-    public void setDoctors(List<D> doctors) {
+//    @XmlElement(name = "doctor")
+//    @XmlElementWrapper(name = "DOCTORS")
+    public void setDoctors(List<Doctor> doctors) {
         this.doctors = doctors;
     }
 }

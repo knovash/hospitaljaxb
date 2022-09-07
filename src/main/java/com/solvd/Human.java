@@ -1,13 +1,11 @@
 package com.solvd;
 
-public abstract class Human
-{
+public abstract class Human {
     public String name;
     public int age;
     public int weight;
 
-    public Human()
-    {
+    public Human() {
     }
 
     public String toString() {

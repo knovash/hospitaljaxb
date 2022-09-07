@@ -57,13 +57,13 @@ public class Main {
         Hospital hospital = new Hospital();
         hospital.setAddress("Minsk");
         hospital.setPatients(patients);
-//        hospital.setDentists(dentists);
-//        hospital.setSurgeons(surgeons);
+        hospital.setDentists(dentists);
+        hospital.setSurgeons(surgeons);
 
         List<Department> departments = new ArrayList<>();
         departments.add(dental);
         departments.add(surgery);
-        hospital.setDepartments(departments);
+//        hospital.setDepartments(departments);
 
         System.out.println("\nPRINT HOSPITAL");
         hospital.getPatients().forEach(p -> System.out.println(p));
@@ -104,6 +104,6 @@ public class Main {
 
         System.out.println(hospital2);
         hospital2.getPatients().forEach(p -> System.out.println(p));
-//        hospital2.getDentists().forEach(d -> System.out.println(d));
-//        hospital2.getSurgeons().forEach(d -> System.out.println(d));
+        hospital2.getDentists().forEach(d -> System.out.println(d));
+        hospital2.getSurgeons().forEach(d -> System.out.println(d));
     }}

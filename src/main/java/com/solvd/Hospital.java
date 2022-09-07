@@ -7,17 +7,15 @@ import java.util.List;
 
 @XmlRootElement
 //@XmlType(propOrder = {"address","patients", "surgeons", "dentists"})
-public class Hospital
-{
+public class Hospital {
     private String address;
     private List<Patient> patients;
-//    private List<Dentist> dentists;
-//    private List<Surgeon> surgeons;
-    private List<Department> departments;
+    private List<Dentist> dentists;
+    private List<Surgeon> surgeons;
+//    private List<Department> departments;
 
 
-    public Hospital()
-    {
+    public Hospital() {
     }
 
     public String toString() {
@@ -27,6 +25,7 @@ public class Hospital
     public String getAddress() {
         return address;
     }
+
     @XmlElement
     public void setAddress(String address) {
         this.address = address;
@@ -35,37 +34,38 @@ public class Hospital
     public List<Patient> getPatients() {
         return patients;
     }
+
     @XmlElement(name = "patient")
     @XmlElementWrapper(name = "PATIENTS")
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
     }
 
-//    public List<Dentist> getDentists() {
-//        return dentists;
-//    }
-//    @XmlElement(name = "dentist")
-//    @XmlElementWrapper(name = "DENTISTS")
-//    public void setDentists(List<Dentist> dentists) {
-//        this.dentists = dentists;
+
+//    public List<Department> getDepartments() {
+//        return departments;
 //    }
 //
-//    public List<Surgeon> getSurgeons() {
-//        return surgeons;
-//    }
-//    @XmlElement(name = "surgeon")
-//    @XmlElementWrapper(name = "SURGEONS")
-//    public void setSurgeons(List<Surgeon> surgeons) {
-//        this.surgeons = surgeons;
+//    @XmlElement(name = "department")
+//    @XmlElementWrapper(name = "DEPARTMENTS")
+//    public void setDepartments(List<Department> departments) {
+//        this.departments = departments;
 //    }
 
-    public List<Department> getDepartments() {
-        return departments;
+
+    public List<Dentist> getDentists() {
+        return dentists;
     }
 
-    @XmlElement(name = "department")
-    @XmlElementWrapper(name = "DEPARTMENTS")
-    public void setDepartments(List<Department> departments) {
-        this.departments = departments;
+    public void setDentists(List<Dentist> dentists) {
+        this.dentists = dentists;
+    }
+
+    public List<Surgeon> getSurgeons() {
+        return surgeons;
+    }
+
+    public void setSurgeons(List<Surgeon> surgeons) {
+        this.surgeons = surgeons;
     }
 }

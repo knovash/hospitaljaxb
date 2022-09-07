@@ -1,42 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hospital>
     <address>Minsk</address>
-    <DEPARTMENTS>
-        <department>
-            <DOCTORS>
-                <doctor>
-                    <name>Denis</name>
-                    <age>44</age>
-                    <weight>88</weight>
-                    <spec>dentist</spec>
-                </doctor>
-                <doctor>
-                    <name>Denis</name>
-                    <age>44</age>
-                    <weight>88</weight>
-                    <spec>dentist</spec>
-                </doctor>
-            </DOCTORS>
-            <name>DENTAL</name>
-        </department>
-        <department>
-            <DOCTORS>
-                <doctor>
-                    <name>Sergey</name>
-                    <age>66</age>
-                    <weight>77</weight>
-                    <spec>surgeon</spec>
-                </doctor>
-                <doctor>
-                    <name>Sergey</name>
-                    <age>66</age>
-                    <weight>77</weight>
-                    <spec>surgeon</spec>
-                </doctor>
-            </DOCTORS>
-            <name>SURGERY</name>
-        </department>
-    </DEPARTMENTS>
+    <dentists>
+        <name>Denis</name>
+        <age>44</age>
+        <weight>88</weight>
+        <spec>dentist</spec>
+    </dentists>
+    <dentists>
+        <name>Denis</name>
+        <age>44</age>
+        <weight>88</weight>
+        <spec>dentist</spec>
+    </dentists>
     <PATIENTS>
         <patient>
             <name>Alex</name>
@@ -49,4 +25,16 @@
             <weight>66</weight>
         </patient>
     </PATIENTS>
+    <surgeons>
+        <name>Sergey</name>
+        <age>66</age>
+        <weight>77</weight>
+        <spec>surgeon</spec>
+    </surgeons>
+    <surgeons>
+        <name>Sergey</name>
+        <age>66</age>
+        <weight>77</weight>
+        <spec>surgeon</spec>
+    </surgeons>
 </hospital>
