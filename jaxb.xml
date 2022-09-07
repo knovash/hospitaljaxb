@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hospital>
     <address>Minsk</address>
-    <DENTALS>
-        <Dental>
+    <DEPS>
+        <dep>
             <name>dental</name>
             <dentists>
                 <name>Denis</name>
@@ -16,8 +16,8 @@
                 <weight>88</weight>
                 <spec>dentist</spec>
             </dentists>
-        </Dental>
-        <Dental>
+        </dep>
+        <dep>
             <name>dental</name>
             <dentists>
                 <name>Denis</name>
@@ -31,8 +31,8 @@
                 <weight>88</weight>
                 <spec>dentist</spec>
             </dentists>
-        </Dental>
-    </DENTALS>
+        </dep>
+    </DEPS>
     <PATIENTS>
         <Patient>
             <name>Alex</name>
