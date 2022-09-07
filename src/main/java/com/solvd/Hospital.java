@@ -10,8 +10,7 @@ import java.util.List;
 public class Hospital {
     private String address;
     private List<Patient> patients;
-    private List<DepDental> deps;
-//    private List<DepSurgery> depSur;
+    private List<Department> deps;
 
     public Hospital() {
     }
@@ -19,10 +18,6 @@ public class Hospital {
     public String toString() {
         return ("Hospital: " + this.address + " patients:" + this.patients.size());
     }
-
-//    @XmlElement(name = "patient")
-//    @XmlElementWrapper(name = "PATIENTS")
-
 
     public String getAddress() {
         return address;
@@ -43,14 +38,12 @@ public class Hospital {
         this.patients = patients;
     }
 
-
-
-    public List<DepDental> getDeps() {
+    public List<Department> getDeps() {
         return deps;
     }
-    @XmlElement(name = "dep")
-    @XmlElementWrapper(name = "DEPS")
-    public void setDeps(List<DepDental> deps) {
+    @XmlElement(name = "department")
+    @XmlElementWrapper(name = "DEPARTMENTS")
+    public void setDeps(List<Department> deps) {
         this.deps = deps;
     }
 }

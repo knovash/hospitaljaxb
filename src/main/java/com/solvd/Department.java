@@ -1,24 +1,31 @@
 package com.solvd;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 //public abstract class Department extends Human {
-public abstract class Department {
-    private String name;
+public class Department {
+    private String depName;
+    private List<Doctor> doctors;
 
     public Department() {
     }
 
     public String toString() {
-        return ("Department: " + " " + this.name);
+        return ("Department: " + " " + this.depName);
     }
 
-    public String getName() {
-        return name;
+    public String getDepName() {
+        return depName;
+    }
+    public void setDepName(String depName) {
+        this.depName = depName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
     }
 }

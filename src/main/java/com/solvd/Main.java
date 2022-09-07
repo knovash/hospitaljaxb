@@ -39,27 +39,33 @@ public class Main {
         patients.add(patient);
         patients.add(patient);
 
-        List<Dentist> dentists = new ArrayList<>();
+        List<Doctor> dentists = new ArrayList<>();
         dentists.add(dentist);
         dentists.add(dentist);
 
-        List<Surgeon> surgeons = new ArrayList<>();
+        List<Doctor> surgeons = new ArrayList<>();
         surgeons.add(surgeon);
         surgeons.add(surgeon);
+
 
         DepDental depDental = new DepDental();
-        depDental.setName("dental");
-        depDental.setDentists(dentists);
-        List<DepDental> depsDent = new ArrayList<>();
-        depsDent.add(depDental);
-        depsDent.add(depDental);
+        depDental.setDepName("dental");
+        depDental.setDoctors(dentists);
+
+        List<Department> departments = new ArrayList<>();
+
+        departments.add(depDental);
+        departments.add(depDental);
 
         DepSurgery depSurgery = new DepSurgery();
-        depSurgery.setName("dental");
-        depSurgery.setSurgeons(surgeons);
-        List<DepSurgery> depsSur = new ArrayList<>();
-        depsSur.add(depSurgery);
-        depsSur.add(depSurgery);
+        depSurgery.setDepName("surgery");
+        depSurgery.setDoctors(surgeons);
+
+        departments.add(depSurgery);
+        departments.add(depSurgery);
+
+
+
 
 
 
@@ -67,7 +73,7 @@ public class Main {
         hospital.setAddress("Minsk");
         hospital.setPatients(patients);
 
-        hospital.setDeps(depsDent);
+        hospital.setDeps(departments);
 
 
         System.out.println("\nPRINT HOSPITAL");
@@ -115,7 +121,7 @@ public class Main {
         hospital2.getDeps().forEach(d -> System.out.println(d));
 
 //        hospital2.getDentals().stream().flatMap(d -> d.getDentists().stream()).forEach(d1 -> System.out.println("-d-" + d1));
-        hospital2.getDeps().stream().flatMap(d -> d.getDentists().stream()).forEach(d1 -> System.out.println("-d-" + d1));
+        hospital2.getDeps().stream().flatMap(d -> d.getDoctors().stream()).forEach(d1 -> System.out.println("-d-" + d1));
 
 //                hospital.getDepartments().entrySet().stream()
 //                .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))

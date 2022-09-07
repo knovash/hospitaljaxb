@@ -1,38 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hospital>
     <address>Minsk</address>
-    <DEPS>
-        <dep>
-            <name>dental</name>
-            <dentists>
+    <DEPARTMENTS>
+        <department>
+            <depName>dental</depName>
+            <doctors>
                 <name>Denis</name>
                 <age>44</age>
                 <weight>88</weight>
                 <spec>dentist</spec>
-            </dentists>
-            <dentists>
+            </doctors>
+            <doctors>
                 <name>Denis</name>
                 <age>44</age>
                 <weight>88</weight>
                 <spec>dentist</spec>
-            </dentists>
-        </dep>
-        <dep>
-            <name>dental</name>
-            <dentists>
+            </doctors>
+        </department>
+        <department>
+            <depName>dental</depName>
+            <doctors>
                 <name>Denis</name>
                 <age>44</age>
                 <weight>88</weight>
                 <spec>dentist</spec>
-            </dentists>
-            <dentists>
+            </doctors>
+            <doctors>
                 <name>Denis</name>
                 <age>44</age>
                 <weight>88</weight>
                 <spec>dentist</spec>
-            </dentists>
-        </dep>
-    </DEPS>
+            </doctors>
+        </department>
+        <department>
+            <depName>surgery</depName>
+            <doctors>
+                <name>Sergey</name>
+                <age>66</age>
+                <weight>77</weight>
+                <spec>surgeon</spec>
+            </doctors>
+            <doctors>
+                <name>Sergey</name>
+                <age>66</age>
+                <weight>77</weight>
+                <spec>surgeon</spec>
+            </doctors>
+        </department>
+        <department>
+            <depName>surgery</depName>
+            <doctors>
+                <name>Sergey</name>
+                <age>66</age>
+                <weight>77</weight>
+                <spec>surgeon</spec>
+            </doctors>
+            <doctors>
+                <name>Sergey</name>
+                <age>66</age>
+                <weight>77</weight>
+                <spec>surgeon</spec>
+            </doctors>
+        </department>
+    </DEPARTMENTS>
     <PATIENTS>
         <Patient>
             <name>Alex</name>
