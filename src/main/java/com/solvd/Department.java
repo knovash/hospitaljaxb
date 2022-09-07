@@ -1,28 +1,20 @@
 package com.solvd;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import java.util.List;
+public abstract class Department extends Human {
+    private String car;
 
-public abstract class Department<D extends Doctor> {
-    private String name;
-
-    private List<Doctor> doctors;
-
-    public String getName() {
-        return name;
+    public Department() {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String toString() {
+        return ("Department: " + super.name + " " + super.age + " " + super.weight + " " + this.car);
     }
 
-    public List<Doctor> getDoctors() {
-        return doctors;
+    public String getCar() {
+        return car;
     }
-//    @XmlElement(name = "doctor")
-//    @XmlElementWrapper(name = "DOCTORS")
-    public void setDoctors(List<Doctor> doctors) {
-        this.doctors = doctors;
+
+    public void setCar(String car) {
+        this.car = car;
     }
 }

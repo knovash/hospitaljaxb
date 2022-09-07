@@ -1,40 +1,72 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hospital>
     <address>Minsk</address>
+    <audis>
+        <Audi>
+            <name>Sergey</name>
+            <age>66</age>
+            <weight>77</weight>
+            <car>audi</car>
+        </Audi>
+        <Audi>
+            <name>Sergey</name>
+            <age>66</age>
+            <weight>77</weight>
+            <car>audi</car>
+        </Audi>
+    </audis>
     <dentists>
-        <name>Denis</name>
-        <age>44</age>
-        <weight>88</weight>
-        <spec>dentist</spec>
+        <Dentist>
+            <name>Denis</name>
+            <age>44</age>
+            <weight>88</weight>
+            <spec>dentist</spec>
+        </Dentist>
+        <Dentist>
+            <name>Denis</name>
+            <age>44</age>
+            <weight>88</weight>
+            <spec>dentist</spec>
+        </Dentist>
     </dentists>
-    <dentists>
-        <name>Denis</name>
-        <age>44</age>
-        <weight>88</weight>
-        <spec>dentist</spec>
-    </dentists>
-    <PATIENTS>
-        <patient>
+    <fords>
+        <Ford>
+            <name>Denis</name>
+            <age>44</age>
+            <weight>88</weight>
+            <car>ford</car>
+        </Ford>
+        <Ford>
+            <name>Denis</name>
+            <age>44</age>
+            <weight>88</weight>
+            <car>ford</car>
+        </Ford>
+    </fords>
+    <patients>
+        <Patient>
             <name>Alex</name>
             <age>33</age>
             <weight>66</weight>
-        </patient>
-        <patient>
+        </Patient>
+        <Patient>
             <name>Alex</name>
             <age>33</age>
             <weight>66</weight>
-        </patient>
-    </PATIENTS>
+        </Patient>
+    </patients>
     <surgeons>
-        <name>Sergey</name>
-        <age>66</age>
-        <weight>77</weight>
-        <spec>surgeon</spec>
-    </surgeons>
-    <surgeons>
-        <name>Sergey</name>
-        <age>66</age>
-        <weight>77</weight>
-        <spec>surgeon</spec>
+        <Surgeon>
+            <name>Sergey</name>
+            <age>66</age>
+            <weight>77</weight>
+            <spec>surgeon</spec>
+        </Surgeon>
+        <Surgeon>
+            <name>Sergey</name>
+            <age>66</age>
+            <weight>77</weight>
+            <spec>surgeon</spec>
+        </Surgeon>
     </surgeons>
 </hospital>

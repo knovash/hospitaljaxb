@@ -12,8 +12,8 @@ public class Hospital {
     private List<Patient> patients;
     private List<Dentist> dentists;
     private List<Surgeon> surgeons;
-//    private List<Department> departments;
-
+    private List<Ford> fords;
+    private List<Audi> audis;
 
     public Hospital() {
     }
@@ -22,11 +22,15 @@ public class Hospital {
         return ("Hospital: " + this.address + " patients:" + this.patients.size());
     }
 
+//    @XmlElement(name = "patient")
+//    @XmlElementWrapper(name = "PATIENTS")
+
+
     public String getAddress() {
         return address;
     }
 
-    @XmlElement
+    @XmlElement(name = "address")
     public void setAddress(String address) {
         this.address = address;
     }
@@ -35,28 +39,18 @@ public class Hospital {
         return patients;
     }
 
-    @XmlElement(name = "patient")
-    @XmlElementWrapper(name = "PATIENTS")
+    @XmlElement(name = "Patient")
+    @XmlElementWrapper(name = "patients")
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
     }
-
-
-//    public List<Department> getDepartments() {
-//        return departments;
-//    }
-//
-//    @XmlElement(name = "department")
-//    @XmlElementWrapper(name = "DEPARTMENTS")
-//    public void setDepartments(List<Department> departments) {
-//        this.departments = departments;
-//    }
-
 
     public List<Dentist> getDentists() {
         return dentists;
     }
 
+    @XmlElement(name = "Dentist")
+    @XmlElementWrapper(name = "dentists")
     public void setDentists(List<Dentist> dentists) {
         this.dentists = dentists;
     }
@@ -65,7 +59,27 @@ public class Hospital {
         return surgeons;
     }
 
+    @XmlElement(name = "Surgeon")
+    @XmlElementWrapper(name = "surgeons")
     public void setSurgeons(List<Surgeon> surgeons) {
         this.surgeons = surgeons;
+    }
+
+    public List<Ford> getFords() {
+        return fords;
+    }
+    @XmlElement(name = "Ford")
+    @XmlElementWrapper(name = "fords")
+    public void setFords(List<Ford> fords) {
+        this.fords = fords;
+    }
+
+    public List<Audi> getAudis() {
+        return audis;
+    }
+    @XmlElement(name = "Audi")
+    @XmlElementWrapper(name = "audis")
+    public void setAudis(List<Audi> audis) {
+        this.audis = audis;
     }
 }

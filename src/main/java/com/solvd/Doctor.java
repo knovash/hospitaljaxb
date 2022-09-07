@@ -4,7 +4,6 @@ public abstract class Doctor extends Human {
     private String spec;
 
     public Doctor() {
-
     }
 
     public String toString() {
