@@ -67,13 +67,10 @@ public class Main {
         hospital.setPatients(patients);
 //        hospital.setDeps(departments);
 
-
-
         Map<String, Department> departments2 = new HashMap<>();
         departments2.put("dnt", depDental);
         departments2.put("sur", depSurgery);
         hospital.setDepartments(departments2);
-
 
         System.out.println("\nPRINT HOSPITAL");
         hospital.getPatients().forEach(p -> System.out.println(p));
@@ -115,8 +112,8 @@ public class Main {
 
         System.out.println("\nTEST Jackson Hosital");
         // convert hospital object to JSON
-        String json = new ObjectMapper().writeValueAsString(hospital);
-        System.out.println(json);
+        String jsonOut = new ObjectMapper().writeValueAsString(hospital);
+        System.out.println(jsonOut);
         // create object mapper instance
         ObjectMapper mapper = new ObjectMapper();
         // create an instance of DefaultPrettyPrinter
@@ -126,6 +123,18 @@ public class Main {
 //        mapper.writeValue(Paths.get("hospital.json").toFile(), hospital);
         // convert object to JSON file DefaultPrettyPrinter
         writerPP.writeValue(Paths.get("hospital.json").toFile(), hospital);
+
+
+
+        // convert JSON to Java Object
+        Hospital hospital3 = mapper.readValue(jsonOut, Hospital.class);
+        System.out.println("convert JSON to Java Object");
+        System.out.println(hospital3);
+        hospital3.getPatients().forEach(p -> System.out.println(p));
+        hospital3.getDepartments().entrySet().stream()
+                .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
+                .flatMap(departmentEntry -> departmentEntry.getValue().getDoctors().stream())
+                .forEach(doctor -> System.out.println(doctor));
 
 
     }
