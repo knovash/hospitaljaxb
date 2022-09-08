@@ -1,7 +1,9 @@
 package com.solvd;
 
-public abstract class Doctor extends Human {
+//public abstract class Doctor extends Human {
+public class Doctor extends Human {
     private String spec;
+
 
     public Doctor() {
     }
