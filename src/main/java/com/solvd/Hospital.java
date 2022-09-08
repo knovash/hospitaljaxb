@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
+import java.util.Map;
 
 @XmlRootElement
 //@XmlType(propOrder = {"address","patients", "surgeons", "dentists"})
@@ -11,6 +12,7 @@ public class Hospital {
     private String address;
     private List<Patient> patients;
     private List<Department> deps;
+    private Map<String, Department> departments;
 
     public Hospital() {
     }
@@ -41,9 +43,20 @@ public class Hospital {
     public List<Department> getDeps() {
         return deps;
     }
-    @XmlElement(name = "department")
-    @XmlElementWrapper(name = "DEPARTMENTS")
+    @XmlElement(name = "dep")
+    @XmlElementWrapper(name = "DEPS")
     public void setDeps(List<Department> deps) {
         this.deps = deps;
+    }
+
+
+    public Map<String, Department> getDepartments() {
+        return departments;
+    }
+
+    @XmlElement(name = "department")
+    @XmlElementWrapper(name = "DEPARTMENTS")
+    public void setDepartments(Map<String, Department> departments) {
+        this.departments = departments;
     }
 }

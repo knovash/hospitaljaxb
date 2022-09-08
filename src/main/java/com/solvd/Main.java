@@ -1,5 +1,8 @@
 package com.solvd;
 
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import org.apache.commons.io.FileUtils;
 
 import javax.xml.bind.JAXBContext;
@@ -11,8 +14,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -47,45 +53,30 @@ public class Main {
         surgeons.add(surgeon);
         surgeons.add(surgeon);
 
-
         DepDental depDental = new DepDental();
         depDental.setDepName("dental");
         depDental.setDoctors(dentists);
-
-        List<Department> departments = new ArrayList<>();
-
-        departments.add(depDental);
-        departments.add(depDental);
 
         DepSurgery depSurgery = new DepSurgery();
         depSurgery.setDepName("surgery");
         depSurgery.setDoctors(surgeons);
 
-        departments.add(depSurgery);
-        departments.add(depSurgery);
-
-
-
-
-
 
         Hospital hospital = new Hospital();
         hospital.setAddress("Minsk");
         hospital.setPatients(patients);
+//        hospital.setDeps(departments);
 
-        hospital.setDeps(departments);
+
+
+        Map<String, Department> departments2 = new HashMap<>();
+        departments2.put("dnt", depDental);
+        departments2.put("sur", depSurgery);
+        hospital.setDepartments(departments2);
 
 
         System.out.println("\nPRINT HOSPITAL");
         hospital.getPatients().forEach(p -> System.out.println(p));
-//        departments.stream().forEach(department -> System.out.println(department.getName()));
-//        hospital.getDepartments().forEach(department -> System.out.println(department.getName()));
-//        hospital.getDepartments().get(0).getDoctors().forEach(doctor -> System.out.println(doctor));
-//        hospital.getDepartments().get(1).getDoctors().forEach(doctor -> System.out.println(doctor));
-
-//        hospital.getDepartments().stream()
-//                .flatMap(d -> d.getDoctors().stream())
-//                .forEach(doctor -> System.out.println(doctor));
 
 
         //писать результат сериализации будем в Writer(StringWriter)
@@ -103,7 +94,7 @@ public class Main {
         System.out.println(result);
 
         File filejaxb = new File("jaxb.xml");
-//        FileUtils.write(filejaxb, result);
+//        FileUtils.write(filejaxb, result); // Deprecated
         FileUtils.writeStringToFile(filejaxb, result, Charset.defaultCharset());
 
 
@@ -115,24 +106,26 @@ public class Main {
 
         System.out.println(hospital2);
         hospital2.getPatients().forEach(p -> System.out.println(p));
-//        hospital2.getDentists().forEach(d -> System.out.println(d));
-//        hospital2.getSurgeons().forEach(d -> System.out.println(d));
-//        hospital2.getDentals().forEach(d -> System.out.println(d));
-        hospital2.getDeps().forEach(d -> System.out.println(d));
+        hospital2.getDepartments().entrySet().stream()
+                .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
+                .flatMap(departmentEntry -> departmentEntry.getValue().getDoctors().stream())
+                .forEach(doctor -> System.out.println(doctor));
 
-//        hospital2.getDentals().stream().flatMap(d -> d.getDentists().stream()).forEach(d1 -> System.out.println("-d-" + d1));
-        hospital2.getDeps().stream().flatMap(d -> d.getDoctors().stream()).forEach(d1 -> System.out.println("-d-" + d1));
+        // Jackson
 
-//                hospital.getDepartments().entrySet().stream()
-//                .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
-//                .flatMap(departmentEntry -> departmentEntry.getValue().getDoctors().stream())
-//                .forEach(doctor -> System.out.println(doctor));
+        System.out.println("\nTEST Jackson Hosital");
+        // convert hospital object to JSON
+        String json = new ObjectMapper().writeValueAsString(hospital);
+        System.out.println(json);
+        // create object mapper instance
+        ObjectMapper mapper = new ObjectMapper();
+        // create an instance of DefaultPrettyPrinter
+        ObjectWriter writerPP = mapper.writer(new DefaultPrettyPrinter());
 
-
-//        hospital.getDepartments().entrySet().stream()
-//                .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
-//                .flatMap(departmentEntry -> departmentEntry.getValue().getDoctors().stream())
-//                .forEach(doctor -> System.out.println(doctor));
+        // convert object to JSON file
+//        mapper.writeValue(Paths.get("hospital.json").toFile(), hospital);
+        // convert object to JSON file DefaultPrettyPrinter
+        writerPP.writeValue(Paths.get("hospital.json").toFile(), hospital);
 
 
     }

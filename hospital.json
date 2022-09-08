@@ -1,0 +1,43 @@
+{
+  "address" : "Minsk",
+  "patients" : [ {
+    "name" : "Alex",
+    "age" : 33,
+    "weight" : 66
+  }, {
+    "name" : "Alex",
+    "age" : 33,
+    "weight" : 66
+  } ],
+  "deps" : null,
+  "departments" : {
+    "sur" : {
+      "depName" : "surgery",
+      "doctors" : [ {
+        "name" : "Sergey",
+        "age" : 66,
+        "weight" : 77,
+        "spec" : "surgeon"
+      }, {
+        "name" : "Sergey",
+        "age" : 66,
+        "weight" : 77,
+        "spec" : "surgeon"
+      } ]
+    },
+    "dnt" : {
+      "depName" : "dental",
+      "doctors" : [ {
+        "name" : "Denis",
+        "age" : 44,
+        "weight" : 88,
+        "spec" : "dentist"
+      }, {
+        "name" : "Denis",
+        "age" : 44,
+        "weight" : 88,
+        "spec" : "dentist"
+      } ]
+    }
+  }
+}
