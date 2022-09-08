@@ -3,6 +3,9 @@ package com.solvd;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.solvd.department.DepDental;
+import com.solvd.department.DepSurgery;
+import com.solvd.department.Department;
 import org.apache.commons.io.FileUtils;
 
 import javax.xml.bind.JAXBContext;
@@ -76,6 +79,8 @@ public class Main {
         hospital.getPatients().forEach(p -> System.out.println(p));
 
 
+        // JAXB
+
         //писать результат сериализации будем в Writer(StringWriter)
         StringWriter writer = new StringWriter();
 
@@ -135,7 +140,5 @@ public class Main {
                 .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
                 .flatMap(departmentEntry -> departmentEntry.getValue().getDoctors().stream())
                 .forEach(doctor -> System.out.println(doctor));
-
-
     }
 }

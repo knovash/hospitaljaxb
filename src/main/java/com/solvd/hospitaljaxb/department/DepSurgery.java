@@ -1,6 +1,6 @@
-package com.solvd;
+package com.solvd.department;
 
-import java.util.List;
+import com.solvd.department.Department;
 
 public class DepSurgery extends Department {
 

@@ -1,4 +1,4 @@
-package com.solvd;
+package com.solvd.hospitaljaxb;
 
 //public abstract class Doctor extends Human {
 public class Doctor extends Human {

@@ -1,4 +1,6 @@
-package com.solvd;
+package com.solvd.department;
+
+import com.solvd.Doctor;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;
