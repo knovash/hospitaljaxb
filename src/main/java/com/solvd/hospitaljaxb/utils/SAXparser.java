@@ -77,10 +77,10 @@ public class SAXparser extends DefaultHandler {
                 p.setCredit(credit);
             }
             if (level.peek() == "dob") {
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//                LocalDate dob = LocalDate.parse(content, formatter);
-//                p.setDob(dob);
-                p.setDob(content);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate dob = LocalDate.parse(content, formatter);
+                p.setDob(dob);
+//                p.setDob(content);
             }
         }
 

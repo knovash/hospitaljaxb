@@ -5,17 +5,56 @@
     "name" : "Olga",
     "gender" : "FEMALE",
     "credit" : 1500,
-    "dob" : "1970-02-05"
+    "dob" : {
+      "year" : 1970,
+      "month" : "FEBRUARY",
+      "monthValue" : 2,
+      "dayOfMonth" : 5,
+      "leapYear" : false,
+      "dayOfWeek" : "THURSDAY",
+      "dayOfYear" : 36,
+      "era" : "CE",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      }
+    }
   }, {
     "name" : "Alex",
     "gender" : "MALE",
     "credit" : 1000,
-    "dob" : "1970-02-05"
+    "dob" : {
+      "year" : 1970,
+      "month" : "FEBRUARY",
+      "monthValue" : 2,
+      "dayOfMonth" : 5,
+      "leapYear" : false,
+      "dayOfWeek" : "THURSDAY",
+      "dayOfYear" : 36,
+      "era" : "CE",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      }
+    }
   }, {
     "name" : "Ivan",
     "gender" : "MALE",
     "credit" : 1200,
-    "dob" : "1970-02-05"
+    "dob" : {
+      "year" : 1970,
+      "month" : "FEBRUARY",
+      "monthValue" : 2,
+      "dayOfMonth" : 5,
+      "leapYear" : false,
+      "dayOfWeek" : "THURSDAY",
+      "dayOfYear" : 36,
+      "era" : "CE",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      }
+    }
   } ],
   "departments" : {
     "dental" : {
