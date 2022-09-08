@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hospital>
-    <address>Minsk</address>
-    <phone>+375-29-12345</phone>
     <PATIENTS>
         <Patient>
             <gender>FEMALE</gender>
@@ -26,7 +24,6 @@
         <entry>
             <key>dental</key>
             <value>
-                <name>dental</name>
                 <DOCTORS>
                     <doctor>
                         <name>Denis</name>
@@ -42,9 +39,14 @@
             </value>
         </entry>
         <entry>
+            <key>emergency</key>
+            <value>
+                <DOCTORS/>
+            </value>
+        </entry>
+        <entry>
             <key>surgery</key>
             <value>
-                <name>surgery</name>
                 <DOCTORS>
                     <doctor>
                         <name>Sergey</name>

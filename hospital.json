@@ -1,64 +1,25 @@
 {
-  "address" : "Minsk",
-  "phone" : "+375-29-12345",
+  "address" : null,
+  "phone" : null,
   "patients" : [ {
     "name" : "Olga",
     "gender" : "FEMALE",
     "credit" : 1500,
-    "dob" : {
-      "year" : 1970,
-      "month" : "FEBRUARY",
-      "monthValue" : 2,
-      "dayOfMonth" : 5,
-      "leapYear" : false,
-      "dayOfWeek" : "THURSDAY",
-      "dayOfYear" : 36,
-      "era" : "CE",
-      "chronology" : {
-        "id" : "ISO",
-        "calendarType" : "iso8601"
-      }
-    }
+    "dob" : "1970-02-05"
   }, {
     "name" : "Alex",
     "gender" : "MALE",
     "credit" : 1000,
-    "dob" : {
-      "year" : 1970,
-      "month" : "FEBRUARY",
-      "monthValue" : 2,
-      "dayOfMonth" : 5,
-      "leapYear" : false,
-      "dayOfWeek" : "THURSDAY",
-      "dayOfYear" : 36,
-      "era" : "CE",
-      "chronology" : {
-        "id" : "ISO",
-        "calendarType" : "iso8601"
-      }
-    }
+    "dob" : "1970-02-05"
   }, {
     "name" : "Ivan",
     "gender" : "MALE",
     "credit" : 1200,
-    "dob" : {
-      "year" : 1970,
-      "month" : "FEBRUARY",
-      "monthValue" : 2,
-      "dayOfMonth" : 5,
-      "leapYear" : false,
-      "dayOfWeek" : "THURSDAY",
-      "dayOfYear" : 36,
-      "era" : "CE",
-      "chronology" : {
-        "id" : "ISO",
-        "calendarType" : "iso8601"
-      }
-    }
+    "dob" : "1970-02-05"
   } ],
   "departments" : {
     "dental" : {
-      "depName" : "dental",
+      "depName" : null,
       "doctors" : [ {
         "name" : "Denis",
         "gender" : null,
@@ -71,8 +32,12 @@
         "price" : 600
       } ]
     },
+    "emergency" : {
+      "depName" : null,
+      "doctors" : [ ]
+    },
     "surgery" : {
-      "depName" : "surgery",
+      "depName" : null,
       "doctors" : [ {
         "name" : "Sergey",
         "gender" : null,

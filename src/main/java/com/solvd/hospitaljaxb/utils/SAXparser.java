@@ -5,7 +5,6 @@ import com.solvd.hospitaljaxb.Human;
 import com.solvd.hospitaljaxb.Patient;
 import com.solvd.hospitaljaxb.doctor.Doctor;
 
-
 import com.solvd.hospitaljaxb.doctor.Spec;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -22,12 +21,9 @@ import org.xml.sax.helpers.DefaultHandler;
 public class SAXparser extends DefaultHandler {
 
     Stack<String> level = new Stack<>();
-    Stack<String> levelHi = new Stack<>();
-    List<Patient> patients = new ArrayList<>();
     String key;
     Hospital hospital;
     private String levelUp;
-    private String department;
     Doctor d = new Doctor();
     Patient p = new Patient();
     List<Doctor> docs = new ArrayList<>();
@@ -37,19 +33,16 @@ public class SAXparser extends DefaultHandler {
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         System.out.println("\n>>> ENTER" + localName + " <" + qName + ">    key " + key);
         level.add(qName);
-//        System.out.println("level " + level);
         if (qName == "patient") p = new Patient();
         if (qName == "doctor") d = new Doctor();
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         String content = new String(ch, start, length);
-        System.out.println("CHARACTERS content: " + content);
         if (!content.isEmpty() && !content.contains("\n")) {
             System.out.println("level: " + level + " content:" + content);
         }
@@ -84,9 +77,10 @@ public class SAXparser extends DefaultHandler {
                 p.setCredit(credit);
             }
             if (level.peek() == "dob") {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                LocalDate dob = LocalDate.parse(content, formatter);
-                p.setDob(dob);
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//                LocalDate dob = LocalDate.parse(content, formatter);
+//                p.setDob(dob);
+                p.setDob(content);
             }
         }
 
@@ -104,24 +98,20 @@ public class SAXparser extends DefaultHandler {
         }
     }
 
-
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         System.out.println("<<< EXIT " + localName + " <" + qName + ">");
         if (qName == "Patient") {
-            hospital.getPatients().forEach(p -> System.out.println(p));
             System.out.println("END PATIENTS add p " + p.toString());
             hospital.getPatients().add(p);
-            hospital.getPatients().forEach(p -> System.out.println(p));
             p = new Patient();
-
         }
         if (qName == "doctor") {
             System.out.println("END DOCTOR add d " + d.toString());
             docs.add(d);
         }
         if (qName == "DOCTORS") {
-            System.out.println("------------ D E P A R T M E N T    key " + key);
+            System.out.println("key " + key);
             hospital.getDepartments().get(key).setDoctors(docs);
             docs = new ArrayList<>();
         }

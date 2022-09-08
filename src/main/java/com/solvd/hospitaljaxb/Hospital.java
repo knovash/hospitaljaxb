@@ -51,8 +51,6 @@ public class Hospital {
         this.patients = patients;
     }
 
-
-
     public Map<String, Department> getDepartments() {
         return departments;
     }

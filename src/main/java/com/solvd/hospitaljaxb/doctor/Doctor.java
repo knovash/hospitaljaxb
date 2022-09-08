@@ -4,7 +4,6 @@ import com.solvd.hospitaljaxb.Human;
 
 import java.math.BigDecimal;
 
-
 public class Doctor extends Human {
 
     private Spec spec;

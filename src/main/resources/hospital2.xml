@@ -5,13 +5,21 @@
     <PATIENTS>
         <Patient>
             <gender>FEMALE</gender>
-            <name>Alex</name>
-            <credit>555</credit>
+            <name>Olga2</name>
+            <credit>1500</credit>
+            <dob>1970-02-05</dob>
         </Patient>
         <Patient>
-            <gender>FEMALE</gender>
-            <name>Alex</name>
-            <credit>555</credit>
+            <gender>MALE</gender>
+            <name>Alex2</name>
+            <credit>1000</credit>
+            <dob>1970-02-05</dob>
+        </Patient>
+        <Patient>
+            <gender>MALE</gender>
+            <name>Ivan2</name>
+            <credit>1200</credit>
+            <dob>1970-02-05</dob>
         </Patient>
     </PATIENTS>
     <DEPARTMENTS>
@@ -21,13 +29,13 @@
                 <name>dental</name>
                 <DOCTORS>
                     <doctor>
-                        <name>Denis</name>
-                        <price>33</price>
+                        <name>Denis2</name>
+                        <price>500</price>
                         <spec>DNT</spec>
                     </doctor>
                     <doctor>
-                        <name>Denis</name>
-                        <price>33</price>
+                        <name>Dmitri2</name>
+                        <price>600</price>
                         <spec>DNT</spec>
                     </doctor>
                 </DOCTORS>
@@ -39,13 +47,13 @@
                 <name>surgery</name>
                 <DOCTORS>
                     <doctor>
-                        <name>Sergey</name>
-                        <price>22</price>
+                        <name>Sergey2</name>
+                        <price>200</price>
                         <spec>SUR</spec>
                     </doctor>
                     <doctor>
-                        <name>Sergey</name>
-                        <price>22</price>
+                        <name>Sveta2</name>
+                        <price>250</price>
                         <spec>SUR</spec>
                     </doctor>
                 </DOCTORS>
