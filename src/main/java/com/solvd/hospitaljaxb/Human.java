@@ -1,14 +1,45 @@
-package com.solvd;
+package com.solvd.hospitaljaxb;
+
+import java.time.LocalDate;
 
 public abstract class Human {
-    public String name;
-    public int age;
-    public int weight;
+    private String name;
+    private Gender gender;
 
     public Human() {
     }
 
+    public enum Gender {
+        MALE("man"), FEMALE("woman");
+
+        private final String displayName;
+
+        Gender(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
+    }
+
     public String toString() {
-        return ("Human: " + this.name + " " + this.age + " " + this.weight);
+        return ("Human: " + this.name + " " + this.gender);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

@@ -1,42 +1,46 @@
 {
   "address" : "Minsk",
+  "phone" : "+375-29-12345",
   "patients" : [ {
-    "name" : "Alex",
-    "age" : 33,
-    "weight" : 66
+    "name" : "Olga",
+    "gender" : "FEMALE",
+    "credit" : 1500
   }, {
     "name" : "Alex",
-    "age" : 33,
-    "weight" : 66
+    "gender" : "MALE",
+    "credit" : 1000
+  }, {
+    "name" : "Ivan",
+    "gender" : "MALE",
+    "credit" : 1200
   } ],
-  "deps" : null,
   "departments" : {
-    "sur" : {
-      "depName" : "surgery",
-      "doctors" : [ {
-        "name" : "Sergey",
-        "age" : 66,
-        "weight" : 77,
-        "spec" : "surgeon"
-      }, {
-        "name" : "Sergey",
-        "age" : 66,
-        "weight" : 77,
-        "spec" : "surgeon"
-      } ]
-    },
-    "dnt" : {
+    "dental" : {
       "depName" : "dental",
       "doctors" : [ {
         "name" : "Denis",
-        "age" : 44,
-        "weight" : 88,
-        "spec" : "dentist"
+        "gender" : null,
+        "spec" : "DNT",
+        "price" : 500
       }, {
-        "name" : "Denis",
-        "age" : 44,
-        "weight" : 88,
-        "spec" : "dentist"
+        "name" : "Dmitri",
+        "gender" : null,
+        "spec" : "DNT",
+        "price" : 600
+      } ]
+    },
+    "surgery" : {
+      "depName" : "surgery",
+      "doctors" : [ {
+        "name" : "Sergey",
+        "gender" : null,
+        "spec" : "SUR",
+        "price" : 200
+      }, {
+        "name" : "Sveta",
+        "gender" : null,
+        "spec" : "SUR",
+        "price" : 250
       } ]
     }
   }

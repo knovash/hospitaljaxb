@@ -1,56 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<root xmlns="hospital"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="hospital schema.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hospital>
     <address>Minsk</address>
-    <DEPARTMENTS>
-        <department>
-            <DOCTORS>
-                <doctor>
-                    <name>Denis</name>
-                    <age>44</age>
-                    <weight>88</weight>
-                    <spec>dentist</spec>
-                </doctor>
-                <doctor>
-                    <name>Denis</name>
-                    <age>44</age>
-                    <weight>88</weight>
-                    <spec>dentist</spec>
-                </doctor>
-            </DOCTORS>
-            <name>DENTAL</name>
-        </department>
-        <department>
-            <DOCTORS>
-                <doctor>
-                    <name>Sergey</name>
-                    <age>66</age>
-                    <weight>77</weight>
-                    <spec>surgeon</spec>
-                </doctor>
-                <doctor>
-                    <name>Sergey</name>
-                    <age>66</age>
-                    <weight>77</weight>
-                    <spec>surgeon</spec>
-                </doctor>
-            </DOCTORS>
-            <name>SURGERY</name>
-        </department>
-    </DEPARTMENTS>
+    <phone>+375-29-12345</phone>
     <PATIENTS>
-        <patient>
+        <Patient>
+            <gender>FEMALE</gender>
             <name>Alex</name>
-            <age>33</age>
-            <weight>66</weight>
-        </patient>
-        <patient>
+            <credit>555</credit>
+        </Patient>
+        <Patient>
+            <gender>FEMALE</gender>
             <name>Alex</name>
-            <age>33</age>
-            <weight>66</weight>
-        </patient>
+            <credit>555</credit>
+        </Patient>
     </PATIENTS>
+    <DEPARTMENTS>
+        <entry>
+            <key>dental</key>
+            <value>
+                <name>dental</name>
+                <DOCTORS>
+                    <doctor>
+                        <name>Denis</name>
+                        <price>33</price>
+                        <spec>DNT</spec>
+                    </doctor>
+                    <doctor>
+                        <name>Denis</name>
+                        <price>33</price>
+                        <spec>DNT</spec>
+                    </doctor>
+                </DOCTORS>
+            </value>
+        </entry>
+        <entry>
+            <key>surgery</key>
+            <value>
+                <name>surgery</name>
+                <DOCTORS>
+                    <doctor>
+                        <name>Sergey</name>
+                        <price>22</price>
+                        <spec>SUR</spec>
+                    </doctor>
+                    <doctor>
+                        <name>Sergey</name>
+                        <price>22</price>
+                        <spec>SUR</spec>
+                    </doctor>
+                </DOCTORS>
+            </value>
+        </entry>
+    </DEPARTMENTS>
 </hospital>
-</root>

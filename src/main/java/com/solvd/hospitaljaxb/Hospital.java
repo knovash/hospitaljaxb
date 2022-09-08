@@ -1,19 +1,20 @@
-package com.solvd;
+package com.solvd.hospitaljaxb;
 
-import com.solvd.department.Department;
+import com.solvd.hospitaljaxb.department.Department;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 import java.util.Map;
 
 @XmlRootElement
-//@XmlType(propOrder = {"address","patients", "surgeons", "dentists"})
+@XmlType(propOrder = {"address","phone", "patients", "departments"})
 public class Hospital {
     private String address;
+    private String phone;
     private List<Patient> patients;
-    private List<Department> deps;
     private Map<String, Department> departments;
 
     public Hospital() {
@@ -32,6 +33,14 @@ public class Hospital {
         this.address = address;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+    @XmlElement(name = "phone")
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public List<Patient> getPatients() {
         return patients;
     }
@@ -42,14 +51,6 @@ public class Hospital {
         this.patients = patients;
     }
 
-    public List<Department> getDeps() {
-        return deps;
-    }
-    @XmlElement(name = "dep")
-    @XmlElementWrapper(name = "DEPS")
-    public void setDeps(List<Department> deps) {
-        this.deps = deps;
-    }
 
 
     public Map<String, Department> getDepartments() {

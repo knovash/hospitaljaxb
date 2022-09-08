@@ -1,21 +1,28 @@
-package com.solvd;
+package com.solvd.hospitaljaxb;
 
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.solvd.department.DepDental;
-import com.solvd.department.DepSurgery;
-import com.solvd.department.Department;
+import com.solvd.hospitaljaxb.department.DepDental;
+import com.solvd.hospitaljaxb.department.DepEmergency;
+import com.solvd.hospitaljaxb.department.DepSurgery;
+import com.solvd.hospitaljaxb.department.Department;
+import com.solvd.hospitaljaxb.doctor.Doctor;
+import com.solvd.hospitaljaxb.utils.SAXparser;
 import org.apache.commons.io.FileUtils;
+import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -25,118 +32,95 @@ import java.util.Map;
 
 public class Main {
 
-    public static void main(String[] args) throws JAXBException, IOException {
-        //создание объекта для сериализации в XML
-        Patient patient = new Patient();
-        patient.name = "Alex";
-        patient.age = 33;
-        patient.weight = 66;
+    public static void main(String[] args) throws JAXBException, IOException, ParserConfigurationException, SAXException {
 
-        Dentist dentist = new Dentist();
-        dentist.name = "Denis";
-        dentist.age = 44;
-        dentist.weight = 88;
-        dentist.setSpec("dentist");
-
-        Surgeon surgeon = new Surgeon();
-        surgeon.name = "Sergey";
-        surgeon.age = 66;
-        surgeon.weight = 77;
-        surgeon.setSpec("surgeon");
-
+        // create empty hospital
         List<Patient> patients = new ArrayList<>();
-        patients.add(patient);
-        patients.add(patient);
-
         List<Doctor> dentists = new ArrayList<>();
-        dentists.add(dentist);
-        dentists.add(dentist);
-
         List<Doctor> surgeons = new ArrayList<>();
-        surgeons.add(surgeon);
-        surgeons.add(surgeon);
+        List<Doctor> emergencys = new ArrayList<>();
+        Map<String, Department> departments = new HashMap<>();
+        DepDental dental = new DepDental();
+        DepSurgery surgery = new DepSurgery();
+        DepEmergency emergency = new DepEmergency();
+        dental.setDoctors(dentists);
+        surgery.setDoctors(surgeons);
+        emergency.setDoctors(emergencys);
+        departments.put("dental", dental);
+        departments.put("surgery", surgery);
+        departments.put("emergency", emergency);
 
-        DepDental depDental = new DepDental();
-        depDental.setDepName("dental");
-        depDental.setDoctors(dentists);
+        // SAX parser. from XML to JavaObject
+        Hospital hospitalSAX = new Hospital();
+        hospitalSAX.setPatients(patients);
+        hospitalSAX.setDepartments(departments);
 
-        DepSurgery depSurgery = new DepSurgery();
-        depSurgery.setDepName("surgery");
-        depSurgery.setDoctors(surgeons);
+        System.out.println("\nStart SAX parser. from XML to JavaObject\n");
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+        SAXparser saxClass = new SAXparser(hospitalSAX);
+        URL resource = Main.class.getClassLoader().getResource("hospital.xml");
+        File resHospital = new File(resource.getFile());
+        parser.parse(resHospital, saxClass);
 
-
-        Hospital hospital = new Hospital();
-        hospital.setAddress("Minsk");
-        hospital.setPatients(patients);
-//        hospital.setDeps(departments);
-
-        Map<String, Department> departments2 = new HashMap<>();
-        departments2.put("dnt", depDental);
-        departments2.put("sur", depSurgery);
-        hospital.setDepartments(departments2);
-
-        System.out.println("\nPRINT HOSPITAL");
-        hospital.getPatients().forEach(p -> System.out.println(p));
-
-
-        // JAXB
-
-        //писать результат сериализации будем в Writer(StringWriter)
-        StringWriter writer = new StringWriter();
-
-        //создание объекта Marshaller, который выполняет сериализацию
-        JAXBContext context = JAXBContext.newInstance(Hospital.class);
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        // сама сериализация
-        marshaller.marshal(hospital, writer);
-
-        //преобразовываем в строку все записанное в StringWriter
-        String result = writer.toString();
-        System.out.println(result);
-
-        File filejaxb = new File("jaxb.xml");
-//        FileUtils.write(filejaxb, result); // Deprecated
-        FileUtils.writeStringToFile(filejaxb, result, Charset.defaultCharset());
-
-
-        // get variables from xml file, created before
-        System.out.println("\nUnmarshaller create");
-        Unmarshaller um = context.createUnmarshaller();
-        System.out.println("\nget variables from xml file, created before");
-        Hospital hospital2 = (Hospital) um.unmarshal(new FileReader("jaxb.xml"));
-
-        System.out.println(hospital2);
-        hospital2.getPatients().forEach(p -> System.out.println(p));
-        hospital2.getDepartments().entrySet().stream()
+        System.out.println("\nHospital SAX parser:\n");
+        System.out.println(hospitalSAX);
+        hospitalSAX.getPatients().forEach(p -> System.out.println(p));
+        hospitalSAX.getDepartments().entrySet().stream()
                 .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
                 .flatMap(departmentEntry -> departmentEntry.getValue().getDoctors().stream())
                 .forEach(doctor -> System.out.println(doctor));
 
-        // Jackson
+        // JAXB parser from XML to JavaObject and from object to XML.
+        System.out.println("\nStart JAXB parser. from XML to JavaObject\n");
+        //писать результат сериализации будем в Writer(StringWriter)
+        StringWriter writer = new StringWriter();
 
+        JAXBContext context = JAXBContext.newInstance(Hospital.class);
+
+        // from XML to Object
+        System.out.println("\nUnmarshaller create");
+        Unmarshaller um = context.createUnmarshaller();
+        System.out.println("\nget variables from xml file, created before");
+        Hospital hospitalJAXB = (Hospital) um.unmarshal(resHospital);
+
+        System.out.println(hospitalJAXB);
+        hospitalJAXB.getPatients().forEach(p -> System.out.println(p));
+        hospitalJAXB.getDepartments().entrySet().stream()
+                .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
+                .flatMap(departmentEntry -> departmentEntry.getValue().getDoctors().stream())
+                .forEach(doctor -> System.out.println(doctor));
+
+        // from Object to XML
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        // сама сериализация
+        marshaller.marshal(hospitalJAXB, writer);
+        //преобразовываем в строку все записанное в StringWriter
+        String result = writer.toString();
+        System.out.println(result);
+        File filejaxb = new File("jaxb.xml");
+        FileUtils.writeStringToFile(filejaxb, result, Charset.defaultCharset());
+
+        // Jackson
         System.out.println("\nTEST Jackson Hosital");
         // convert hospital object to JSON
-        String jsonOut = new ObjectMapper().writeValueAsString(hospital);
+        String jsonOut = new ObjectMapper().writeValueAsString(hospitalJAXB);
         System.out.println(jsonOut);
         // create object mapper instance
         ObjectMapper mapper = new ObjectMapper();
         // create an instance of DefaultPrettyPrinter
         ObjectWriter writerPP = mapper.writer(new DefaultPrettyPrinter());
 
-        // convert object to JSON file
-//        mapper.writeValue(Paths.get("hospital.json").toFile(), hospital);
         // convert object to JSON file DefaultPrettyPrinter
-        writerPP.writeValue(Paths.get("hospital.json").toFile(), hospital);
+        writerPP.writeValue(Paths.get("hospital.json").toFile(), hospitalJAXB);
 
-
-
-        // convert JSON to Java Object
-        Hospital hospital3 = mapper.readValue(jsonOut, Hospital.class);
+        // from JSON to Java Object
+        Hospital hospitalJSON = mapper.readValue(jsonOut, Hospital.class);
         System.out.println("convert JSON to Java Object");
-        System.out.println(hospital3);
-        hospital3.getPatients().forEach(p -> System.out.println(p));
-        hospital3.getDepartments().entrySet().stream()
+        System.out.println(hospitalJSON);
+        hospitalJSON.getPatients().forEach(p -> System.out.println(p));
+        hospitalJSON.getDepartments().entrySet().stream()
                 .peek(departmentEntry -> System.out.println(departmentEntry.getKey()))
                 .flatMap(departmentEntry -> departmentEntry.getValue().getDoctors().stream())
                 .forEach(doctor -> System.out.println(doctor));

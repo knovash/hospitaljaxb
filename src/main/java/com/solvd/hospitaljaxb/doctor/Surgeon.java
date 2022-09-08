@@ -1,4 +1,4 @@
-package com.solvd.hospitaljaxb;
+package com.solvd.hospitaljaxb.doctor;
 
 import com.solvd.hospitaljaxb.doctor.Doctor;
 

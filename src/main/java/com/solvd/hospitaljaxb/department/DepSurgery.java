@@ -1,17 +1,4 @@
-package com.solvd.department;
-
-import com.solvd.department.Department;
+package com.solvd.hospitaljaxb.department;
 
 public class DepSurgery extends Department {
-
-
-//    private List<Surgeon> surgeons;
-//
-//    public List<Surgeon> getSurgeons() {
-//        return surgeons;
-//    }
-//
-//    public void setSurgeons(List<Surgeon> surgeons) {
-//        this.surgeons = surgeons;
-//    }
 }

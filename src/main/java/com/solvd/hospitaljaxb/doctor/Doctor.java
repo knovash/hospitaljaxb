@@ -1,22 +1,35 @@
-package com.solvd.hospitaljaxb;
+package com.solvd.hospitaljaxb.doctor;
 
-//public abstract class Doctor extends Human {
+import com.solvd.hospitaljaxb.Human;
+
+import java.math.BigDecimal;
+
+
 public class Doctor extends Human {
-    private String spec;
 
+    private Spec spec;
+    private BigDecimal price;
 
     public Doctor() {
     }
 
     public String toString() {
-        return ("Doctor: " + super.name + " " + super.age + " " + super.weight + " " + this.spec);
+        return ("Doctor: " + super.getName() + " " + this.spec + " " + this.price + "$");
     }
 
-    public String getSpec() {
+    public Spec getSpec() {
         return spec;
     }
 
-    public void setSpec(String spec) {
+    public void setSpec(Spec spec) {
         this.spec = spec;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }
