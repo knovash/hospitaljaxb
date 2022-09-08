@@ -7,16 +7,19 @@
             <gender>FEMALE</gender>
             <name>Olga</name>
             <credit>1500</credit>
+            <dob>1970-02-05</dob>
         </Patient>
         <Patient>
             <gender>MALE</gender>
             <name>Alex</name>
             <credit>1000</credit>
+            <dob>1970-02-05</dob>
         </Patient>
         <Patient>
             <gender>MALE</gender>
             <name>Ivan</name>
             <credit>1200</credit>
+            <dob>1970-02-05</dob>
         </Patient>
     </PATIENTS>
     <DEPARTMENTS>

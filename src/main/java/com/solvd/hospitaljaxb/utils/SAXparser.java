@@ -69,11 +69,6 @@ public class SAXparser extends DefaultHandler {
                 BigDecimal price = new BigDecimal(content);
                 d.setPrice(price);
             }
-//            if (level.peek() == "resdate") {
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
-//                LocalDate resdate = LocalDate.parse(content, formatter);
-//                d.setResDate(resdate);
-//            }
         }
 
         if (levelUp == "Patient") {
@@ -88,11 +83,11 @@ public class SAXparser extends DefaultHandler {
                 BigDecimal credit = new BigDecimal(content);
                 p.setCredit(credit);
             }
-//            if (level.peek() == "dob") {
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
-//                LocalDate dob = LocalDate.parse(content, formatter);
-//                p.setDateOfBirth(dob);
-//            }
+            if (level.peek() == "dob") {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate dob = LocalDate.parse(content, formatter);
+                p.setDob(dob);
+            }
         }
 
         if (levelUp == "hospital") {
