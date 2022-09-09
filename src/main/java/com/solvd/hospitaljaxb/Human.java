@@ -1,7 +1,5 @@
 package com.solvd.hospitaljaxb;
 
-import java.time.LocalDate;
-
 public abstract class Human {
     private String name;
     private Gender gender;

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @XmlRootElement
-@XmlType(propOrder = {"address","phone", "patients", "departments"})
+@XmlType(propOrder = {"address", "phone", "patients", "departments"})
 public class Hospital {
     private String address;
     private String phone;
@@ -36,6 +36,7 @@ public class Hospital {
     public String getPhone() {
         return phone;
     }
+
     @XmlElement(name = "phone")
     public void setPhone(String phone) {
         this.phone = phone;

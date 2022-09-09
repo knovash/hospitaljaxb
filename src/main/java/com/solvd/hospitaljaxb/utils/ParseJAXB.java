@@ -15,15 +15,25 @@ import java.nio.charset.Charset;
 public class ParseJAXB implements IParse {
 
     @Override
-    public void fileToObject(File file, Hospital hospital) throws JAXBException {
+    public void fileToObject(File file, Hospital hospital) {
 
-        // JAXB parser from XML to JavaObject and from object to XML.
+        /** JAXB parser from XML to JavaObject and from object to XML */
         System.out.println("\nStart JAXB parser. from XML to JavaObject\n");
-        JAXBContext context = JAXBContext.newInstance(Hospital.class);
-        // from XML to Object
-        Unmarshaller um = context.createUnmarshaller();
-        Hospital object = (Hospital) um.unmarshal(file);
-
+        JAXBContext context = null;
+        try {
+            context = JAXBContext.newInstance(Hospital.class);
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
+        /** from XML to Object */
+        Hospital object = null;
+        Unmarshaller um = null;
+        try {
+            um = context.createUnmarshaller();
+            object = (Hospital) um.unmarshal(file);
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println(object);
         object.getPatients().forEach(p -> System.out.println(p));
         object.getDepartments().entrySet().stream()
@@ -33,20 +43,22 @@ public class ParseJAXB implements IParse {
     }
 
     @Override
-    public void objectToFile(Hospital hospital, File file) throws JAXBException, IOException {
+    public void objectToFile(Hospital hospital, File file) {
+        /** from Object to XML */
         System.out.println("\nJAXB objectToFile\n");
-        //писать результат сериализации будем в Writer(StringWriter)
         StringWriter writer = new StringWriter();
-        JAXBContext context = JAXBContext.newInstance(Hospital.class);
-        // from Object to XML
-        Marshaller marshaller = context.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        // сама сериализация
-        marshaller.marshal(hospital, writer);
-        //преобразовываем в строку все записанное в StringWriter
-        String result = writer.toString();
-        System.out.println(result);
-//        File filejaxb = new File("jaxb.xml");
-        FileUtils.writeStringToFile(file, result, Charset.defaultCharset());
+        JAXBContext context = null;
+        try {
+            context = JAXBContext.newInstance(Hospital.class);
+            Marshaller marshaller = null;
+            marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            marshaller.marshal(hospital, writer);
+            String result = writer.toString();
+            System.out.println(result);
+            FileUtils.writeStringToFile(file, result, Charset.defaultCharset());
+        } catch (JAXBException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

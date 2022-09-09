@@ -12,14 +12,18 @@ import java.io.IOException;
 public class ParseSAX implements IParse {
 
     @Override
-    public void fileToObject(File file, Hospital hospital) throws ParserConfigurationException, SAXException, IOException {
-        // SAX parser. from XML to JavaObject
+    public void fileToObject(File file, Hospital hospital) {
+        /** SAX parser. from XML to JavaObject */
         System.out.println("\nStart SAX parser. from XML to JavaObject\n");
         SAXParserFactory factory = SAXParserFactory.newInstance();
-        SAXParser parser = factory.newSAXParser();
-        SAXparser saxClass = new SAXparser(hospital);
-        parser.parse(file, saxClass);
-
+        SAXParser parser = null;
+        try {
+            parser = factory.newSAXParser();
+            SAXparser saxClass = new SAXparser(hospital);
+            parser.parse(file, saxClass);
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("\nHospital SAX parser:\n");
         System.out.println(hospital);
         hospital.getPatients().forEach(p -> System.out.println(p));

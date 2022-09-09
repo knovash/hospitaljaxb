@@ -4,7 +4,6 @@ import com.solvd.hospitaljaxb.Hospital;
 import com.solvd.hospitaljaxb.Human;
 import com.solvd.hospitaljaxb.Patient;
 import com.solvd.hospitaljaxb.doctor.Doctor;
-
 import com.solvd.hospitaljaxb.doctor.Spec;
 import org.xml.sax.Attributes;
 
@@ -60,7 +59,6 @@ public class SAXparser extends DefaultHandler {
                 d.setPrice(price);
             }
         }
-
         if (levelUp.equals("Patient")) {
             if (level.peek().equals("name")) {
                 p.setName(content);
@@ -77,7 +75,6 @@ public class SAXparser extends DefaultHandler {
                 p.setDob(content);
             }
         }
-
         if (levelUp.equals("hospital")) {
             if (level.peek().equals("address")) {
                 hospital.setAddress(content);
@@ -86,7 +83,6 @@ public class SAXparser extends DefaultHandler {
                 hospital.setPhone(content);
             }
         }
-
         if (level.peek().equals("key")) {
             key = content;
         }
