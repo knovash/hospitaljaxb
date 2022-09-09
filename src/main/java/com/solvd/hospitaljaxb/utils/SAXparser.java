@@ -33,8 +33,8 @@ public class SAXparser extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
         System.out.println("\n>>> ENTER" + localName + " <" + qName + ">    key " + key);
         level.add(qName);
-        if (qName == "patient") p = new Patient();
-        if (qName == "doctor") d = new Doctor();
+        if (qName.equals("patient")) p = new Patient();
+        if (qName.equals("doctor")) d = new Doctor();
     }
 
     @Override
@@ -47,47 +47,47 @@ public class SAXparser extends DefaultHandler {
             levelUp = level.peek();
             System.out.println("LEVEL UP " + levelUp);
         }
-        if (levelUp == "doctor") {
-            if (level.peek() == "name") {
+        if (levelUp.equals("doctor")) {
+            if (level.peek().equals("name")) {
                 d.setName(content);
             }
-            if (level.peek() == "spec") {
+            if (level.peek().equals("spec")) {
                 Spec spec = Spec.valueOf(content);
                 d.setSpec(spec);
             }
-            if (level.peek() == "price") {
+            if (level.peek().equals("price")) {
                 BigDecimal price = new BigDecimal(content);
                 d.setPrice(price);
             }
         }
 
-        if (levelUp == "Patient") {
-            if (level.peek() == "name") {
+        if (levelUp.equals("Patient")) {
+            if (level.peek().equals("name")) {
                 p.setName(content);
             }
-            if (level.peek() == "gender") {
+            if (level.peek().equals("gender")) {
                 Human.Gender gender = Human.Gender.valueOf(content);
                 p.setGender(gender);
             }
-            if (level.peek() == "credit") {
+            if (level.peek().equals("credit")) {
                 BigDecimal credit = new BigDecimal(content);
                 p.setCredit(credit);
             }
-            if (level.peek() == "dob") {
+            if (level.peek().equals("dob")) {
                 p.setDob(content);
             }
         }
 
-        if (levelUp == "hospital") {
-            if (level.peek() == "address") {
+        if (levelUp.equals("hospital")) {
+            if (level.peek().equals("address")) {
                 hospital.setAddress(content);
             }
-            if (level.peek() == "phone") {
+            if (level.peek().equals("phone")) {
                 hospital.setPhone(content);
             }
         }
 
-        if (level.peek() == "key") {
+        if (level.peek().equals("key")) {
             key = content;
         }
     }
@@ -95,16 +95,16 @@ public class SAXparser extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) {
         System.out.println("<<< EXIT " + localName + " <" + qName + ">");
-        if (qName == "Patient") {
+        if (qName.equals("Patient")) {
             System.out.println("END PATIENTS add p " + p.toString());
             hospital.getPatients().add(p);
             p = new Patient();
         }
-        if (qName == "doctor") {
+        if (qName.equals("doctor")) {
             System.out.println("END DOCTOR add d " + d.toString());
             docs.add(d);
         }
-        if (qName == "DOCTORS") {
+        if (qName.equals("DOCTORS")) {
             System.out.println("key " + key);
             hospital.getDepartments().get(key).setDoctors(docs);
             docs = new ArrayList<>();
