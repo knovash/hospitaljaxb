@@ -7,11 +7,8 @@ import com.solvd.hospitaljaxb.doctor.Doctor;
 
 import com.solvd.hospitaljaxb.doctor.Spec;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -77,9 +74,6 @@ public class SAXparser extends DefaultHandler {
                 p.setCredit(credit);
             }
             if (level.peek() == "dob") {
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//                LocalDate dob = LocalDate.parse(content, formatter);
-//                p.setDob(dob);
                 p.setDob(content);
             }
         }
