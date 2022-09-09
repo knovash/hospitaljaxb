@@ -60,12 +60,12 @@ public class Main {
         parseJAXB.fileToObject(resHospital2, hospitalJAXB);
         // JAXB parser from object to XML.
         File filejaxb = new File("jaxb.xml");
-        parseJAXB.objectToFile(hospitalJAXB, filejaxb);
+        parseJAXB.objectToFile(hospitalSAX, filejaxb);
 
         // Jackson parser from object to JSON.
         ParseJSON parseJSON = new ParseJSON();
         File filejson = new File("hospital.json");
-        parseJSON.objectToFile(hospitalJAXB, filejson);
+        parseJSON.objectToFile(hospitalSAX, filejson);
         // Jackson parser from JSON to JavaObject
         Hospital hospitalJSON = new Hospital();
         hospitalJSON.setPatients(patients);

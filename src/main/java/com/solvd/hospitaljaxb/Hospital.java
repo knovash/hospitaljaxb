@@ -21,7 +21,7 @@ public class Hospital {
     }
 
     public String toString() {
-        return ("Hospital: " + this.address + " patients:" + this.patients.size());
+        return ("Hospital: " + this.address + " " + this.phone);
     }
 
     public String getAddress() {

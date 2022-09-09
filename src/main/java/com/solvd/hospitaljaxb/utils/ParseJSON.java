@@ -17,7 +17,7 @@ public class ParseJSON implements IParse{
         // Jackson from JSON to Java Object
         ObjectMapper mapper = new ObjectMapper(); // create object mapper instance
         Hospital object = mapper.readValue(file, Hospital.class);
-        System.out.println("convert JSON to Java Object");
+        System.out.println("from JSON file to Java Object\n");
         System.out.println(object);
         object.getPatients().forEach(p -> System.out.println(p));
         object.getDepartments().entrySet().stream()
@@ -29,7 +29,7 @@ public class ParseJSON implements IParse{
     @Override
     public void objectToFile(Hospital hospital, File file) throws IOException {
         // Jackson
-        System.out.println("\nTEST Jackson Hosital");
+        System.out.println("\nJackson object to JSON\n");
         // convert hospital object to JSON
         String jsonOut = new ObjectMapper().writeValueAsString(hospital);
         System.out.println(jsonOut);
@@ -39,5 +39,6 @@ public class ParseJSON implements IParse{
         ObjectWriter writerPP = mapper.writer(new DefaultPrettyPrinter());
         // convert object to JSON file DefaultPrettyPrinter
         writerPP.writeValue(Paths.get("hospital.json").toFile(), hospital);
+        System.out.println("JSON saved to file \n");
     }
 }

@@ -1,6 +1,6 @@
 {
-  "address" : null,
-  "phone" : null,
+  "address" : "Minsk",
+  "phone" : "+375-29-12345",
   "patients" : [ {
     "name" : "Olga",
     "gender" : "FEMALE",
