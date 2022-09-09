@@ -16,13 +16,13 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class SAXparser extends DefaultHandler {
 
-    Stack<String> level = new Stack<>();
-    String key;
-    Hospital hospital;
+    private Stack<String> level = new Stack<>();
+    private String key;
+    private Hospital hospital;
     private String levelUp;
-    Doctor d = new Doctor();
-    Patient p = new Patient();
-    List<Doctor> docs = new ArrayList<>();
+    private Doctor d = new Doctor();
+    private Patient p = new Patient();
+    private List<Doctor> docs = new ArrayList<>();
 
     public SAXparser(Hospital hospital) {
         this.hospital = hospital;
@@ -32,8 +32,8 @@ public class SAXparser extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
         System.out.println("\n>>> ENTER" + localName + " <" + qName + ">    key " + key);
         level.add(qName);
-        if (qName.equals("patient")) p = new Patient();
-        if (qName.equals("doctor")) d = new Doctor();
+        if ("patient".equals(qName)) p = new Patient();
+        if ("doctor".equals(qName)) d = new Doctor();
     }
 
     @Override
@@ -46,44 +46,44 @@ public class SAXparser extends DefaultHandler {
             levelUp = level.peek();
             System.out.println("LEVEL UP " + levelUp);
         }
-        if (levelUp.equals("doctor")) {
-            if (level.peek().equals("name")) {
+        if ("doctor".equals(levelUp)) {
+            if ("name".equals(level.peek())) {
                 d.setName(content);
             }
-            if (level.peek().equals("spec")) {
+            if ("spec".equals(level.peek())) {
                 Spec spec = Spec.valueOf(content);
                 d.setSpec(spec);
             }
-            if (level.peek().equals("price")) {
+            if ("price".equals(level.peek())) {
                 BigDecimal price = new BigDecimal(content);
                 d.setPrice(price);
             }
         }
-        if (levelUp.equals("Patient")) {
+        if ("Patient".equals(levelUp)) {
             if (level.peek().equals("name")) {
                 p.setName(content);
             }
-            if (level.peek().equals("gender")) {
+            if ("gender".equals(level.peek())) {
                 Human.Gender gender = Human.Gender.valueOf(content);
                 p.setGender(gender);
             }
-            if (level.peek().equals("credit")) {
+            if ("credit".equals(level.peek())) {
                 BigDecimal credit = new BigDecimal(content);
                 p.setCredit(credit);
             }
-            if (level.peek().equals("dob")) {
+            if ("dob".equals(level.peek())) {
                 p.setDob(content);
             }
         }
-        if (levelUp.equals("hospital")) {
-            if (level.peek().equals("address")) {
+        if ("hospital".equals(levelUp)) {
+            if ("address".equals(level.peek())) {
                 hospital.setAddress(content);
             }
-            if (level.peek().equals("phone")) {
+            if ("phone".equals(level.peek())) {
                 hospital.setPhone(content);
             }
         }
-        if (level.peek().equals("key")) {
+        if ("key".equals(level.peek())) {
             key = content;
         }
     }
@@ -91,16 +91,16 @@ public class SAXparser extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) {
         System.out.println("<<< EXIT " + localName + " <" + qName + ">");
-        if (qName.equals("Patient")) {
+        if ("Patient".equals(qName)) {
             System.out.println("END PATIENTS add p " + p.toString());
             hospital.getPatients().add(p);
             p = new Patient();
         }
-        if (qName.equals("doctor")) {
+        if ("doctor".equals(qName)) {
             System.out.println("END DOCTOR add d " + d.toString());
             docs.add(d);
         }
-        if (qName.equals("DOCTORS")) {
+        if ("DOCTORS".equals(qName)) {
             System.out.println("key " + key);
             hospital.getDepartments().get(key).setDoctors(docs);
             docs = new ArrayList<>();
